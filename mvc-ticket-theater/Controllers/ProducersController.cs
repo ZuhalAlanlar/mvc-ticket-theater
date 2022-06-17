@@ -36,6 +36,7 @@ namespace mvc_ticket_theater.Controllers
         #endregion
 
 
+        #region Create
         public IActionResult Create()
         { return View(); }
 
@@ -50,6 +51,52 @@ namespace mvc_ticket_theater.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        #endregion
+        #region Edit
+        public IActionResult Edit(int id)
+        {
+            var producerDetails = service.GetById(id);
+            if (producerDetails == null) return View("NotFound");
+            return View(producerDetails);
 
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Producer producer)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(producer);
+
+            }
+
+            if (id == producer.Id)
+            {
+                service.Update(id, producer);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(producer);
+        }
+        #endregion
+
+        public IActionResult Delete(int id)
+        {
+            var producerDetails = service.GetById(id);
+            if (producerDetails == null) return View("NotFound");
+            return View(producerDetails);
+
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var producerDetails = service.GetById(id);
+            if (producerDetails == null) return View("NotFound");
+            service.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
