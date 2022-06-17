@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mvc_ticket_theater.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mvc_ticket_theater.Models
 {
-    public class Saloon
+    public class Saloon:IEntityBase
     {
         [Key]
         public int Id { get; set; }

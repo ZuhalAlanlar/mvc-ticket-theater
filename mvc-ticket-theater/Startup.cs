@@ -31,6 +31,8 @@ namespace mvc_ticket_theater
 
             services.AddScoped<IActorsService, ActorsService>();
             services.AddScoped<IProducersService, ProducersService>();
+            services.AddScoped<ISaloonsService, SaloonsService>();
+   
             services.AddControllersWithViews();
         }
 
