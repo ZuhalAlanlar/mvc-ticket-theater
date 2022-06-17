@@ -18,6 +18,7 @@ namespace mvc_ticket_theater.Data.Base
         public void Add(T entity)
         {
             context.Set<T>().Add(entity);
+            context.SaveChanges();
         }
 
         public void Delete(int id)
@@ -25,6 +26,7 @@ namespace mvc_ticket_theater.Data.Base
             var entity = context.Set<T>().FirstOrDefault(n => n.Id == id);
             EntityEntry entityEntry = context.Entry<T>(entity);
             entityEntry.State = EntityState.Deleted;
+            context.SaveChanges();
 
 
         }
@@ -50,6 +52,7 @@ namespace mvc_ticket_theater.Data.Base
         {
             EntityEntry entityEntry = context.Entry<T>(entity);
             entityEntry.State = EntityState.Modified;
+            context.SaveChanges();
             
          
         }
