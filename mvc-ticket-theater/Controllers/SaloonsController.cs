@@ -67,8 +67,23 @@ namespace mvc_ticket_theater.Controllers
             if (!ModelState.IsValid) return View(saloon);
             service.Update(id, saloon);
             return RedirectToAction(nameof(Index));
-        } 
+        }
         #endregion
+        public IActionResult Delete(int id)
+        {
+            var saloonDetails = service.GetById(id);
+            if (saloonDetails == null) return View("NotFound");
+            return View(saloonDetails);
+        }
 
+        [HttpPost,ActionName("Delete")]
+
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var saloonDetails = service.GetById(id);
+            if (saloonDetails == null) return View("NotFound");
+            service.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
