@@ -25,7 +25,8 @@ namespace mvc_ticket_theater.Controllers
             return View(allTheaters);
         }
 
-        public IActionResult Details (int id)
+        #region Details
+        public IActionResult Details(int id)
         {
 
 
@@ -34,6 +35,14 @@ namespace mvc_ticket_theater.Controllers
 
 
         }
+        #endregion
+        #region Create
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        #endregion
     }
 }
