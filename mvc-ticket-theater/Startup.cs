@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using mvc_ticket_theater.Data;
+using mvc_ticket_theater.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,9 @@ namespace mvc_ticket_theater
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(@"Data Source=LAPTOP-H6EKOTV6;Initial Catalog=TheaterTicket;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+
+
+            services.AddScoped<IActorsService, ActorsService>();
             services.AddControllersWithViews();
         }
 

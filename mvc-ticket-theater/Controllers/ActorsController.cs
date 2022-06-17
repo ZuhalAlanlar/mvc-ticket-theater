@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mvc_ticket_theater.Data;
+using mvc_ticket_theater.Data.Services;
+using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +11,43 @@ namespace mvc_ticket_theater.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly AppDbContext context;
+        
+        private readonly IActorsService service;
 
-        public ActorsController(AppDbContext context)
+        public ActorsController(IActorsService service)
         {
-            this.context = context;
+            
+            this.service = service;
         }
 
 
         public IActionResult Index()
         {
-            var allActors = context.Actors.ToList();
+            var allActors = service.GetAll();
             return View(allActors);
+        }
+
+
+
+
+        public IActionResult Create()
+        {
+            return View();
+
+        }
+
+
+        [HttpPost]
+        public IActionResult Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
+        {  
+            if(!ModelState.IsValid)
+            {
+
+                return View(actor);
+
+            }
+            service.Add(actor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
