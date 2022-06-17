@@ -36,7 +36,8 @@ namespace mvc_ticket_theater.Data.Services
 
         public Actor GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = context.Actors.FirstOrDefault(n => n.Id == id);
+            return result;
         }
 
         public Actor Update(int id, Actor newActor)

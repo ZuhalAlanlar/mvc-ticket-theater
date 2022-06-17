@@ -49,5 +49,16 @@ namespace mvc_ticket_theater.Controllers
             service.Add(actor);
             return RedirectToAction(nameof(Index));
         }
+
+
+        public IActionResult Details(int id)
+        {
+            var actorDetails = service.GetById(id);
+            if (actorDetails == null) return View("Empty");
+            return View(actorDetails);
+
+        }
+
+
     }
 }
