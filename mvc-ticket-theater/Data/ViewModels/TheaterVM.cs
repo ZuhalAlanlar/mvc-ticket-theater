@@ -12,29 +12,29 @@ namespace mvc_ticket_theater.Models
     public class TheaterVM
     {
 
-        [Display(Description ="Tiyatro Adı")]
+        [Display(Name ="Tiyatro Adı")]
         public string Name { get; set; }
-        [Display(Description = "Açıklama")]
+        [Display(Name = "Açıklama")]
         public string Description { get; set; }
-        [Display(Description = "Fotoğraf URL")]
+        [Display(Name = "Fotoğraf URL")]
         public string TheaterImg { get; set; }
       
-        [Display(Description = "Fiyat")]
+        [Display(Name = "Fiyat")]
         public double Price { get; set; }
 
-        [Display(Description = "Kategori seçiniz")]
+        [Display(Name = "Kategori seçiniz")]
         public Category Category { get; set; }
-        [Display(Description = "Başlangıç Tarihi")]
+        [Display(Name = "Başlangıç Tarihi")]
         public DateTime StartDate { get; set; }
-        [Display(Description = "Bitiş Tarihi")]
+        [Display(Name = "Bitiş Tarihi")]
         public DateTime EndDate { get; set; }
-        [Display(Description = "Salon Adı")]
+        [Display(Name = "Salon Adı")]
         public int SaloonId { get; set; }
 
-        [Display(Description = "Yönetmenler")]
+        [Display(Name = "Yönetmenler")]
         public int ProducerId { get; set; }
 
-        [Display(Description = "Oyuncular")]
+        [Display(Name = "Oyuncular")]
         public List<int> ActorIds { get; set; }
 
     }

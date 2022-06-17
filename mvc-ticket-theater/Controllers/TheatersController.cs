@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mvc_ticket_theater.Data;
 using mvc_ticket_theater.Data.Services;
+using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,8 +42,30 @@ namespace mvc_ticket_theater.Controllers
 
         public IActionResult Create()
         {
+            var theaterDropdownsValue = service.GetTheaterDropdownsValues();
+
+            ViewBag.Saloons = new SelectList(theaterDropdownsValue.Saloons, "Id", "Name");
+            ViewBag.Producers = new SelectList(theaterDropdownsValue.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(theaterDropdownsValue.Actors, "Id", "FullName");
+
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Create(TheaterVM theater)
+        {
+
+            if(!ModelState.IsValid)
+            {
+                return View(theater);
+            }
+
+            service.addNewTheater(theater);
+            return RedirectToAction(nameof(Index));
+
+            
+        }
+
 
         #endregion
     }

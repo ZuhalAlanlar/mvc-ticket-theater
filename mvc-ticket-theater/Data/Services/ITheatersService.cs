@@ -1,4 +1,5 @@
 ﻿using mvc_ticket_theater.Data.Base;
+using mvc_ticket_theater.Data.ViewModels;
 using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,7 @@ namespace mvc_ticket_theater.Data.Services
     {
 
        public Theater GetTheaterById(int id);
+       public TheaterDropdownsVM GetTheaterDropdownsValues();
+       void addNewTheater(TheaterVM data);
     }
 }
