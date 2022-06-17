@@ -14,20 +14,47 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">mvc_ticket_theater</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Theaters" asp-action="Index">Tiyatro Biletleri</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+           
+                
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-controller="Theaters" asp-action="Index"><i class="bi bi-film"></i>Tiyatrolar</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="drop-down" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-gear">
+                            </i>Yönet</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" asp-controller="Saloons" asp-action="Index"><i class="bi bi-map"></i>Salonlar</a>
+                                <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-person-lines-fill"></i>Yönetmenler</a>
+                                <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-bounding-box"></i>Oyuncular</a>
+
+                            </div>
+
+
+
                         </li>
                     </ul>
+
+
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Theaters" asp-action="Filter" style="padding-right: 25px;">
+                        <input name="searchString" type="text" class="form-control" placeholder="Tiyatro Ara..">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+
+
+
+
+
                 </div>
             </div>
         </nav>
@@ -40,7 +67,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - mvc_ticket_theater - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 -Zuhal 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
