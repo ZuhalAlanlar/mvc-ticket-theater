@@ -9,5 +9,7 @@ namespace mvc_ticket_theater.Data.Services
 {
     public interface ITheatersService:IEntityBaseRepository<Theater>
     {
+
+       public Theater GetTheaterById(int id);
     }
 }

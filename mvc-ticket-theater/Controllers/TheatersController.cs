@@ -24,5 +24,16 @@ namespace mvc_ticket_theater.Controllers
             var allTheaters = service.GetAll(n=>n.Saloon);
             return View(allTheaters);
         }
+
+        public IActionResult Details (int id)
+        {
+
+
+            var theaterDetails = service.GetTheaterById(id);
+            return View(theaterDetails);
+
+
+        }
+
     }
 }
