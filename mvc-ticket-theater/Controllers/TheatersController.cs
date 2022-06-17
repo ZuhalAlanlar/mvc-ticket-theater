@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mvc_ticket_theater.Data;
+using mvc_ticket_theater.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,17 @@ namespace mvc_ticket_theater.Controllers
 {
     public class TheatersController : Controller
     {
-        private readonly AppDbContext context;
+        private readonly ITheatersService service;
 
-        public TheatersController(AppDbContext context)
+        public TheatersController(ITheatersService service)
         {
-            this.context = context;
+            
+            this.service = service;
         }
         public IActionResult Index()
         {
 
-            var allTheaters = context.Theaters.Include(s=>s.Saloon).ToList();
+            var allTheaters = service.GetAll(n=>n.Saloon);
             return View(allTheaters);
         }
     }

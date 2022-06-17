@@ -1,4 +1,5 @@
-﻿using mvc_ticket_theater.Data.Enums;
+﻿using mvc_ticket_theater.Data.Base;
+using mvc_ticket_theater.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace mvc_ticket_theater.Models
 {
-    public class Theater
+    public class Theater:IEntityBase
     {
         [Key]
         public int Id { get; set; }

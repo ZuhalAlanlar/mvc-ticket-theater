@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace mvc_ticket_theater.Data.Base
@@ -36,6 +37,13 @@ namespace mvc_ticket_theater.Data.Base
         {
             var result = context.Set<T>().ToList();
             return result;
+        }
+
+        public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = context.Set<T>();
+            query = includeProperties.Aggregate(query, (current, includeProp) => current.Include(includeProp));
+            return query.ToList();
         }
 
         public T GetById(int id)
