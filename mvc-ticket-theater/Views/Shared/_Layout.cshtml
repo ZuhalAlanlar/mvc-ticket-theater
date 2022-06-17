@@ -19,24 +19,27 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-           
-                
+
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Theaters" asp-action="Index"><i class="bi bi-film"></i>Tiyatrolar</a>
                         </li>
+
+
                         <li class="nav-item dropdown">
-                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="drop-down" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-gear">
-                            </i>Yönet</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-gear">
+                                </i>Yönet
+                            </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" asp-controller="Saloons" asp-action="Index"><i class="bi bi-map"></i>Salonlar</a>
-                                <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-person-lines-fill"></i>Yönetmenler</a>
-                                <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-bounding-box"></i>Oyuncular</a>
+                                <a class="dropdown-item" asp-controller="Saloons" asp-action="Index"><i class="bi bi-camera-reels"></i>Salonlar</a>
+                                <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i>Yönetmenler</a>
+                                <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i>Oyuncular</a>
 
                             </div>
 
@@ -67,12 +70,16 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 -Zuhal 
+            &copy; 2022 -Zuhal
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
