@@ -32,7 +32,7 @@
                         <td class="align-middle">@Html.DisplayFor(M => item.Bio)</td>
                         <td class="align-middle">
                             <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Düzenle</a> |
-                            <a class="btn btn-outline-info"><i class="bi bi-eye"></i>Detaylar</a> |
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Detaylar</a> |
                             <a class="btn btn-outline-danger"><i class="bi bi-trash"></i>Sil</a>
 
 
@@ -49,13 +49,6 @@
                 }
 
 
-
-
-
-
-
-
-
             </tbody>
 
 
@@ -63,6 +56,16 @@
 
     </div>
 
+
+
+</div>
+
+
+<div style="position:fixed;right:25px;bottom:25px" class="text-white">
+
+
+
+    <a asp-controller="Producers" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i>Yeni Ekle  </a>
 
 
 </div>
