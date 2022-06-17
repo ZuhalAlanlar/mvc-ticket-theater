@@ -25,7 +25,10 @@ namespace mvc_ticket_theater.Data.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = context.Actors.FirstOrDefault(n => n.Id == id);
+            context.Actors.Remove(result);
+            context.SaveChanges();
+          
         }
 
         public IEnumerable<Actor> GetAll()
@@ -42,7 +45,9 @@ namespace mvc_ticket_theater.Data.Services
 
         public Actor Update(int id, Actor newActor)
         {
-            throw new NotImplementedException();
+            context.Update(newActor);
+            context.SaveChanges();
+            return newActor;
         }
     }
 }

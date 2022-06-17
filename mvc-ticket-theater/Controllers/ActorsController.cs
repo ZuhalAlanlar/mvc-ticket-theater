@@ -29,6 +29,7 @@ namespace mvc_ticket_theater.Controllers
 
 
 
+        #region Create
 
         public IActionResult Create()
         {
@@ -38,9 +39,9 @@ namespace mvc_ticket_theater.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
-        {  
-            if(!ModelState.IsValid)
+        public IActionResult Create([Bind("FullName,ProfilePictureURL,Bio")] Actor actor)
+        {
+            if (!ModelState.IsValid)
             {
 
                 return View(actor);
@@ -49,16 +50,69 @@ namespace mvc_ticket_theater.Controllers
             service.Add(actor);
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
+        #region Details
 
         public IActionResult Details(int id)
         {
             var actorDetails = service.GetById(id);
-            if (actorDetails == null) return View("Empty");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
 
         }
 
+        #endregion
+
+        #region Edit Update
+        public IActionResult Edit(int id)
+        {
+            var actorDetails = service.GetById(id);
+            if (actorDetails == null) return View("NotFound");
+            return View(actorDetails);
+
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(actor);
+
+            }
+            service.Update(id, actor);
+            return RedirectToAction(nameof(Index)); 
+        }
+        #endregion
+        #region Delete
+        public IActionResult Delete(int id)
+        {
+            var actorDetails = service.GetById(id);
+            if (actorDetails == null) return View("NotFound");
+            return View(actorDetails);
+
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+
+
+
+
+            var actorDetails = service.GetById(id);
+            if (actorDetails == null) return View("NotFound");
+
+            service.Delete(id);
+
+
+            return RedirectToAction(nameof(Index));
+        } 
+        #endregion
 
     }
 }
