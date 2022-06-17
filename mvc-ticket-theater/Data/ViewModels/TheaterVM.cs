@@ -11,6 +11,7 @@ namespace mvc_ticket_theater.Models
 {
     public class TheaterVM
     {
+        public int Id { get; set; }
 
         [Display(Name ="Tiyatro Adı")]
         public string Name { get; set; }

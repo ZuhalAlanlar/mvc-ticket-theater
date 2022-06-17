@@ -73,7 +73,63 @@ namespace mvc_ticket_theater.Data.Services
 
             return values;
 
+        }
+        #endregion
+        #region Update
+        public void updateTheater(TheaterVM data)
+        {
+            #region editting
+            var dbTheater = context.Theaters.FirstOrDefault(n => n.Id == data.Id);
+            if (dbTheater != null)
+            {
+
+
+
+
+                dbTheater.Name = data.Name;
+                dbTheater.Description = data.Description;
+                dbTheater.Price = data.Price;
+                dbTheater.TheaterImg = data.TheaterImg;
+                dbTheater.SaloonId = data.SaloonId;
+                dbTheater.StartDate = data.StartDate;
+                dbTheater.EndDate = data.EndDate;
+                dbTheater.Category = data.Category;
+                dbTheater.ProducerId = data.ProducerId;
+
+                context.SaveChanges();
+
+
+
+            }
+
+            #endregion
+
+
+            #region delete existing data
+            var existingActorsDb = context.Theaters_Actors.Where(t => t.TheaterId == data.Id).ToList();
+            context.Theaters_Actors.RemoveRange(existingActorsDb);
+            context.SaveChanges();
+
+            #endregion
+
+
+            #region adding actor
+
+            foreach (var actorId in data.ActorIds)
+            {
+                var newActorTheater = new Theater_Actor()
+                {
+                    TheaterId = data.Id,
+                    ActorId = actorId
+
+                };
+
+                context.Theaters_Actors.Add(newActorTheater);
+            }
+            context.SaveChanges();
+            #endregion
         } 
         #endregion
+
     }
 }

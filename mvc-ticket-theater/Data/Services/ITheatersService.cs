@@ -14,5 +14,6 @@ namespace mvc_ticket_theater.Data.Services
        public Theater GetTheaterById(int id);
        public TheaterDropdownsVM GetTheaterDropdownsValues();
        void addNewTheater(TheaterVM data);
+      void updateTheater (TheaterVM data);
     }
 }
