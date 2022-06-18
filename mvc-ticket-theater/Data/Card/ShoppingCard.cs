@@ -20,6 +20,9 @@ namespace mvc_ticket_theater.Data.Card
 
         public string ShoppingCardId { get; set; }
 
+        public List<ShoppingCardItem> ShoppingCardItems { get; set; }
+
+        #region ADD ITEM TO SHOPPING CARD
 
         public void AddItemToCard(Theater theater)
         {
@@ -39,22 +42,56 @@ namespace mvc_ticket_theater.Data.Card
                 _context.ShoppingCardItems.Add(shoppingcarditem);
             }
 
-            else {
+            else
+            {
 
-                shoppingcarditem.Amount =+ 1;
-            
+                shoppingcarditem.Amount = +1;
+
             }
             _context.SaveChanges();
         }
-        
-        
-    
+
+        #endregion
+
+
+
+        #region DELETE ITEM FROM CARD
+        public void RemoveItemFromCard(Theater theater)
+        {
+
+            var shoppingcarditem = _context.ShoppingCardItems.FirstOrDefault(t => t.Theater.Id == theater.Id && t.ShoppingCardId == ShoppingCardId);
+
+            if (shoppingcarditem != null)
+            {
+                if (shoppingcarditem.Amount > 1)
+                {
+                    shoppingcarditem.Amount--;
+
+                }
+                else
+                {
+
+                    _context.ShoppingCardItems.Remove(shoppingcarditem);
+
+
+                }
+
+            }
 
 
 
 
 
-        public List<ShoppingCardItem> ShoppingCardItems{ get; set; }
+            _context.SaveChanges();
+
+
+
+
+        } 
+        #endregion
+
+
+
 
         public List<ShoppingCardItem> GetShoppingCardItems()
         {
