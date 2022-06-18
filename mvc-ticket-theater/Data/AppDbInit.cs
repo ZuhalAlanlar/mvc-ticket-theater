@@ -12,71 +12,54 @@ namespace mvc_ticket_theater.Data
 {
     public class AppDbInit
     {
-        public static async Task SeedUsersAndRolesAdync(IApplicationBuilder appBuilder)
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
         {
-            using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
+
+                //Roles
                 var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
                 if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-                
-                {
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-                                   
-                }
                 if (!await roleManager.RoleExistsAsync(UserRoles.User))
-
-                {
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
-                }
-
                 //Users
-                #region admin user 
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-                string AdminMail = "zuhal@sahnedenevar.com";
-                var adminUser = await userManager.FindByEmailAsync(AdminMail);
+                string adminUserEmail = "admin@etickets.com";
+
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
                 {
-                    var newAdmin = new AppUser()
+                    var newAdminUser = new AppUser()
                     {
-                        FullName = "Zuhal ALANLAR",
-                        UserName = "Zuhal",
-                        Email = AdminMail,
+                        FullName = "Admin User",
+                        UserName = "admin-user",
+                        Email = adminUserEmail,
                         EmailConfirmed = true
-
                     };
-
-                    await userManager.CreateAsync(newAdmin, "zuhal123?");
-                    await userManager.AddToRoleAsync(newAdmin, UserRoles.Admin);
-
+                    await userManager.CreateAsync(newAdminUser, "Coding@1234?");
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
                 }
 
-                #endregion
 
-       
-                string userMail = "user@sahnedenevar.com";
-                var User = await userManager.FindByEmailAsync(userMail);
-                if (User == null)
+                string appUserEmail = "user@etickets.com";
+
+                var appUser = await userManager.FindByEmailAsync(appUserEmail);
+                if (appUser == null)
                 {
-                    var newUser = new AppUser()
+                    var newAppUser = new AppUser()
                     {
-                        FullName = "User User",
-                        UserName = "User",
-                        Email = userMail,
+                        FullName = "Application User",
+                        UserName = "app-user",
+                        Email = appUserEmail,
                         EmailConfirmed = true
-
                     };
-
-                    await userManager.CreateAsync(newUser, "zuhal123?");
-                    await userManager.AddToRoleAsync(newUser, UserRoles.User);
-
+                    await userManager.CreateAsync(newAppUser, "Coding@1234?");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
                 }
-
-
-
             }
-
 
 
 

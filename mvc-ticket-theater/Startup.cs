@@ -1,13 +1,16 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using mvc_ticket_theater.Data;
 using mvc_ticket_theater.Data.Services;
+using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +38,14 @@ namespace mvc_ticket_theater
             services.AddScoped<ISaloonsService, SaloonsService>();
 
             services.AddScoped<ITheatersService, TheatersService>();
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options=>
+            {
+
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;       
+            });
 
             services.AddControllersWithViews();
 
@@ -58,6 +69,10 @@ namespace mvc_ticket_theater
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseAuthorization();
 
@@ -68,7 +83,7 @@ namespace mvc_ticket_theater
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            AppDbInit.SeedUsersAndRolesAdync(app).Wait();
+            AppDbInit.SeedUsersAndRolesAsync(app).Wait();
         }
     }
 }
