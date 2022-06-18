@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvc_ticket_theater.Data;
 
 namespace mvc_ticket_theater.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220618011249_OrderClasses")]
+    partial class OrderClasses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,29 +130,6 @@ namespace mvc_ticket_theater.Migrations
                     b.ToTable("Saloons");
                 });
 
-            modelBuilder.Entity("mvc_ticket_theater.Models.ShoppingCardItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCardId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TheaterId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TheaterId");
-
-                    b.ToTable("ShoppingCardItems");
-                });
-
             modelBuilder.Entity("mvc_ticket_theater.Models.Theater", b =>
                 {
                     b.Property<int>("Id")
@@ -224,15 +203,6 @@ namespace mvc_ticket_theater.Migrations
                         .IsRequired();
 
                     b.Navigation("Order");
-
-                    b.Navigation("Theater");
-                });
-
-            modelBuilder.Entity("mvc_ticket_theater.Models.ShoppingCardItem", b =>
-                {
-                    b.HasOne("mvc_ticket_theater.Models.Theater", "Theater")
-                        .WithMany()
-                        .HasForeignKey("TheaterId");
 
                     b.Navigation("Theater");
                 });

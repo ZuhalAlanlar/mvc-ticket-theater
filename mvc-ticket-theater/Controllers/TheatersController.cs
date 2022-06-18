@@ -26,6 +26,17 @@ namespace mvc_ticket_theater.Controllers
             var allTheaters = service.GetAll(n=>n.Saloon);
             return View(allTheaters);
         }
+        public IActionResult Filter(string searchString)
+        {
+
+            var allTheaters = service.GetAll(n => n.Saloon);
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = allTheaters.Where(t => t.Name.Contains(searchString) || t.Description.Contains(searchString)).ToList();
+                return View("Index", filteredResult);
+            }
+            return View("Index",allTheaters);
+        }
 
         #region Details
         public IActionResult Details(int id)
