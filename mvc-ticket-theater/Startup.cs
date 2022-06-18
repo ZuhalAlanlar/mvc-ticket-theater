@@ -67,6 +67,8 @@ namespace mvc_ticket_theater
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            AppDbInit.SeedUsersAndRolesAdync(app).Wait();
         }
     }
 }
