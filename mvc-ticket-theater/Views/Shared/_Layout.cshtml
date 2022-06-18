@@ -55,11 +55,13 @@
                     </form>
 
                     <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login"> <i class="bi bi-box-arrow-in-right"></i>Giriş Yap</a>
-                   
-                       @*User Profile Section*@
+                    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register"> <i class="bi bi-person-plus"></i>Üye Ol</a>
+                    @*User Profile Section*@
                     <div class="dropdown">
                         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
-                                aria-expanded="false"><i class="bi bi-person-badge">Admin</i></button>
+                                aria-expanded="false">
+                            <i class="bi bi-person-badge">Admin</i>
+                        </button>
                         <ul class="dropdown-menu" aria-labelledby="profile-btn">
                             <li>
 
