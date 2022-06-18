@@ -37,9 +37,6 @@ namespace mvc_ticket_theater.Data
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Saloon> Saloons { get; set; }
         public DbSet<Theater_Actor> Theaters_Actors { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<ShoppingCardItem> ShoppingCardItems { get; set; }
-
+     
     }
 }
