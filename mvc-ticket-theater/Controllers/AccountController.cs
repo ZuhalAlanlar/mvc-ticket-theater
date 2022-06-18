@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using mvc_ticket_theater.Data;
+using mvc_ticket_theater.Data.ViewModels;
 using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,10 @@ namespace mvc_ticket_theater.Controllers
             this.context = context;
 
         }
-        public IActionResult Index()
+        public IActionResult Login()
         {
-            return View();
+
+            return View(new LoginVM());
         }
     }
 }
