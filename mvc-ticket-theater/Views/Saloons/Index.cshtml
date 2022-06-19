@@ -23,12 +23,14 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                <tr>
 
-                        <td class="align-middle">
-                            <img class="rounded-circle" src="@item.SaloonImg" alt="@item.Name" style="max-width:150px" />
+                    <td class="align-middle">
+                        <img class="rounded-circle" src="@item.SaloonImg" alt="@item.Name" style="max-width:150px" />
 
-                        </td>
+                    </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
                         <td class="align-middle">@Html.DisplayFor(M => item.Name)</td>
                         <td class="align-middle">@Html.DisplayFor(M => item.Adress)</td>
                         <td class="align-middle">
@@ -41,9 +43,10 @@
 
 
                         </td>
+                    }
 
 
-                    </tr>
+                </tr>
 
 
 

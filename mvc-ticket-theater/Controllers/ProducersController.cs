@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using mvc_ticket_theater.Data;
 using mvc_ticket_theater.Data.Services;
+using mvc_ticket_theater.Data.Static;
 using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace mvc_ticket_theater.Controllers
-{
+{   [Authorize(Roles =UserRoles.Admin)]
     public class ProducersController : Controller
     {
         private readonly IProducersService service;
@@ -17,6 +19,8 @@ namespace mvc_ticket_theater.Controllers
         {
             this.service = service;
         }
+        
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var allProducers = service.GetAll();
@@ -24,7 +28,7 @@ namespace mvc_ticket_theater.Controllers
         }
 
         #region Details
-
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             var producerDetails = service.GetById(id);

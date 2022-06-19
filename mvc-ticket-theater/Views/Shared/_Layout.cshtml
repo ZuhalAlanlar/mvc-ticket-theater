@@ -27,25 +27,28 @@
                             <a class="nav-link text-dark" asp-controller="Theaters" asp-action="Index"><i class="bi bi-film"></i>Tiyatrolar</a>
                         </li>
 
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-gear">
+                                    </i>Yönet
+                                </a>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bi bi-gear">
-                                </i>Yönet
-                            </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-controller="Saloons" asp-action="Index"><i class="bi bi-camera-reels"></i>Salonlar</a>
+                                    <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i>Yönetmenler</a>
+                                    <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i>Oyuncular</a>
 
-                                <a class="dropdown-item" asp-controller="Saloons" asp-action="Index"><i class="bi bi-camera-reels"></i>Salonlar</a>
-                                <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i>Yönetmenler</a>
-                                <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i>Oyuncular</a>
-
-                            </div>
+                                </div>
 
 
 
-                        </li>
+                            </li>
+}
+
                     </ul>
 
 
@@ -54,21 +57,9 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
 
-                    <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login"> <i class="bi bi-box-arrow-in-right"></i>Giriş Yap</a>
-                    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register"> <i class="bi bi-person-plus"></i>Üye Ol</a>
-                    @*User Profile Section*@
-                    <div class="dropdown">
-                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
-                                aria-expanded="false">
-                            <i class="bi bi-person-badge">Admin</i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="profile-btn">
-                            <li>
-
-                            </li>
-                        </ul>
-                    </div>
-
+                   
+                    <partial name="_Identity.cshtml"/>
+                   
 
 
                 </div>

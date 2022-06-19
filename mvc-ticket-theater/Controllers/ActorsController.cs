@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using mvc_ticket_theater.Data;
 using mvc_ticket_theater.Data.Services;
+using mvc_ticket_theater.Data.Static;
 using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace mvc_ticket_theater.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ActorsController : Controller
     {
         
@@ -20,7 +23,7 @@ namespace mvc_ticket_theater.Controllers
             this.service = service;
         }
 
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var allActors = service.GetAll();

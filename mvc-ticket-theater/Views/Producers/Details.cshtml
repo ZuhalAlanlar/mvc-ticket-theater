@@ -45,7 +45,9 @@
 
                 <div class="form-group">
 
-                    <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {<a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a>}
+
                     <a class="btn btn-outline-secondary" asp-action="Index">Tümünü Göster</a>
                 </div>
 

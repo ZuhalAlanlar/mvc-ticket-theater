@@ -41,7 +41,7 @@ namespace mvc_ticket_theater.Controllers
 
             var user = await userManager.FindByEmailAsync(loginVM.EmailAdress);
 
-            if (user ! == null)
+            if (user != null)
             {
                 var passwordCheck = await userManager.CheckPasswordAsync(user, loginVM.Password);
                 if(passwordCheck){
@@ -84,6 +84,18 @@ namespace mvc_ticket_theater.Controllers
                 await userManager.AddToRoleAsync(newUser, UserRoles.User);
 
             return View("RegisterCompleted");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Theaters");
+        }
+
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
         }
 
     }

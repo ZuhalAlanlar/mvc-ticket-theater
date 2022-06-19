@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mvc_ticket_theater.Data;
 using mvc_ticket_theater.Data.Services;
+using mvc_ticket_theater.Data.Static;
 using mvc_ticket_theater.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace mvc_ticket_theater.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class TheatersController : Controller
     {
         private readonly ITheatersService service;
@@ -20,12 +23,17 @@ namespace mvc_ticket_theater.Controllers
             
             this.service = service;
         }
+       
+        
+        
+        [AllowAnonymous]
         public IActionResult Index()
         {
 
             var allTheaters = service.GetAll(n=>n.Saloon);
             return View(allTheaters);
         }
+        [AllowAnonymous]
         public IActionResult Filter(string searchString)
         {
 
@@ -39,6 +47,7 @@ namespace mvc_ticket_theater.Controllers
         }
 
         #region Details
+      [AllowAnonymous]
         public IActionResult Details(int id)
         {
 

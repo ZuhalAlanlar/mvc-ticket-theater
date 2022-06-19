@@ -27,7 +27,7 @@ namespace mvc_ticket_theater.Data
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-                string adminUserEmail = "admin@etickets.com";
+                string adminUserEmail = "admin@eticket.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
