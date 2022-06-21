@@ -86,13 +86,13 @@ namespace mvc_ticket_theater.Data
                         {
                             FullName = "Bennu Yıldırımlar",
                             Bio = " Londra – Westminster Education İnstitute – Drama Kursları, İstanbul Üniversitesi Devlet Konservatuarı – Tiyatro Bölümü",
-                            ProfilePictureURL = "https://sehirtiyatrolari.ibb.istanbul/Artist/Detail/175"
+                            ProfilePictureURL = "https://stcdn.ibb.istanbul/Uploads/2020/3/Bennu-Yildirimlar1.jpg?width=235&height=327"
                         },
                         new Actor()
                         {
                             FullName = "Doğan Şirin",
                             Bio = "2003 - 2008 Rolling dance art modern dans, 2003 - 2005 Biz oyuncular sahnesi oyunculuk,",
-                            ProfilePictureURL = "https://sehirtiyatrolari.ibb.istanbul/Artist/Detail/232"
+                            ProfilePictureURL = "https://stcdn.ibb.istanbul/Uploads/2020/3/Dogan-sirin1.jpg?width=235&height=327"
                         }
                     });
                     context.SaveChanges();
@@ -113,7 +113,7 @@ namespace mvc_ticket_theater.Data
                         {
                             FullName = "Can Başak",
                             Bio = "Öğrenimi: İstanbul Üniversitesi Devlet Konservatuvarı Tiyatro Bölümü",
-                            ProfilePictureURL = "https://sehirtiyatrolari.ibb.istanbul/Artist/Detail/194"
+                            ProfilePictureURL = "https://stcdn.ibb.istanbul/Uploads/2020/3/Can-Basak1.jpg?width=235&height=327"
                         },
                         new Producer()
                         {
@@ -145,7 +145,7 @@ namespace mvc_ticket_theater.Data
                         {
                             Name = "12.Gece",
                             Description = "Shakespeare'in en sevilen komedilerinden biri",
-                            Price = 39.50,
+                            Price = 60,
                             TheaterImg = "https://stcdn.ibb.istanbul/Uploads/2019/12/on-ikinci-gece-son-afis.jpg?width=600&height=847",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(10),
@@ -157,7 +157,7 @@ namespace mvc_ticket_theater.Data
                         {
                             Name = "Birgün Ayakkabımın Tek",
                             Description = "Rengarenk bir mutfak... Ama her yer çok dağınık..",
-                            Price = 29.50,
+                            Price = 55,
                             TheaterImg = "https://stcdn.ibb.istanbul/Uploads/2017/10/Bir-Gun-Ayakkabimin-Teki-Afis.jpg?width=600&height=847",
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(3),
@@ -169,7 +169,7 @@ namespace mvc_ticket_theater.Data
                         {
                             Name = "GÜL'E Ağıt",
                             Description = "Türkiye'de işlenen töre cinayetlerinin simgesi haline gelen Güldünya’nın hikâyesi ekseninde namus, töre ve ahlak kavramlarını sorguluyor.",
-                            Price = 39.50,
+                            Price = 60,
                             TheaterImg = "https://stcdn.ibb.istanbul/Uploads/2022/2/gule-agit-afis-02.jpg?width=390&height=550",
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(7),
@@ -181,7 +181,7 @@ namespace mvc_ticket_theater.Data
                         {
                             Name = "Karagöz Çiftlik Bekçisi",
                             Description = "Karagöz Çocuk Oyunu",
-                            Price = 39.50,
+                            Price = 45,
                             TheaterImg = "https://stcdn.ibb.istanbul/Uploads/2017/9/Karagoz-ciftlik-Bekcisi-Afis.jpg?width=600&height=847",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(-5),
