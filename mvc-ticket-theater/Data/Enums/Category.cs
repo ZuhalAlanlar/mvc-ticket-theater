@@ -7,10 +7,10 @@ namespace mvc_ticket_theater.Data.Enums
 {
     public enum Category
     {
-        Drama = 1,
-        Musical,
-        Comedy,
-        Tragedy
-
+        Dram = 1,
+        Müzikal,
+        Komedi,
+        Trajedi,
+        Çocuk
     }
 }

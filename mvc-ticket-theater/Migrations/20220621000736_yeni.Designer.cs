@@ -10,8 +10,8 @@ using mvc_ticket_theater.Data;
 namespace mvc_ticket_theater.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220618212819_IdentityDbContext")]
-    partial class IdentityDbContext
+    [Migration("20220621000736_yeni")]
+    partial class yeni
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

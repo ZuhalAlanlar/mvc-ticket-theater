@@ -30,7 +30,7 @@ namespace mvc_ticket_theater
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(@"Data Source=LAPTOP-H6EKOTV6;Initial Catalog=TheaterTicket;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(@"Data Source=LAPTOP-H6EKOTV6;Initial Catalog=yenii;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
 
             services.AddScoped<IActorsService, ActorsService>();
@@ -83,6 +83,8 @@ namespace mvc_ticket_theater
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
+
+            AppDbInit.Seed(app);
             AppDbInit.SeedUsersAndRolesAsync(app).Wait();
         }
     }

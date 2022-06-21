@@ -151,7 +151,7 @@ namespace mvc_ticket_theater.Controllers
                 return View(theater);
             }
 
-            service.addNewTheater(theater);
+            service.updateTheater(theater);
             return RedirectToAction(nameof(Index));
 
 

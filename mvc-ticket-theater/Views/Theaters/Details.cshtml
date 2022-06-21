@@ -32,7 +32,7 @@
                                 <p class="card-text"><b>Başlama Tarihi: </b>@Model.StartDate.ToString("dd MMM yy")</p>
                                 <p class="card-text"><b>Bitiş Tarihi: </b>@Model.EndDate.ToString("dd MMM yy")</p>
                                 <p class="card-text ">
-                                    <b>Status: </b>
+                                    <b>Durum: </b>
                                     @if (DateTime.Now >= Model.StartDate && DateTime.Now <= Model.EndDate)
                                     {
                                         <span class="badge bg-success text-white">GÖSTERİMDE</span>
@@ -75,7 +75,7 @@
                                     </a>
                                     <a class="btn btn-success text-white">
 
-                                        <i class="bi bi-cart-plus"></i> @Model.Price.ToString("c"))
+                                         @Model.Price.ToString("c"))
                                     </a>
                                 </p>
                             </div>
